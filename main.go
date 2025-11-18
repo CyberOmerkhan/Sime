@@ -5,16 +5,24 @@ import (
 	"net/http"
 )
 
-// handler function:
-
 func home(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello from Sime!!!"))
+	w.Write([]byte("Displaying a home page..."))
+}
+
+func snippetView(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Displaying a specific snippet"))
+}
+
+func snippetCreate(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Displaying a form for creating a snippet"))
 }
 
 func main() {
 	// initializing mux as the server
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", home)
+	mux.HandleFunc("/home", home)
+	mux.HandleFunc("/snippet/view", snippetView)
+	mux.HandleFunc("/snippet/create", snippetCreate)
 	// print a log message to say that the server is runnning
 	log.Print("Starting server on :4000")
 
