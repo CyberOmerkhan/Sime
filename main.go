@@ -20,9 +20,9 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// initializing mux as the server
 	mux := http.NewServeMux()
-	mux.HandleFunc("/home", home)
-	mux.HandleFunc("/snippet/view", snippetView)
-	mux.HandleFunc("/snippet/create", snippetCreate)
+	mux.HandleFunc("/", home)
+	mux.HandleFunc("/snippet/view/", snippetView)
+	mux.HandleFunc("/snippet/create/", snippetCreate)
 	// print a log message to say that the server is runnning
 	log.Print("Starting server on :4000")
 
