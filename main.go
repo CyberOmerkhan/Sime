@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -11,8 +12,13 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func snippetView(w http.ResponseWriter, r *http.Request) {
-	snippetID := r.PathValue("snippetID")
-	w.Write([]byte(fmt.Sprint("Displaying a specific snippet of ", snippetID)))
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil || id < 0 {
+		http.NotFound(w, r)
+		return
+	}
+	msg := fmt.Sprintf("Displaying a snippet with an ID = %d...", id)
+	w.Write([]byte(msg))
 }
 
 func snippetCreate(w http.ResponseWriter, r *http.Request) {
