@@ -25,12 +25,17 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Displaying a form for creating a snippet"))
 }
 
+func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Posting a created draft"))
+}
+
 func main() {
 	// initializing mux as the server
 	mux := http.NewServeMux()
 	mux.HandleFunc("POST /{$}", home)
 	mux.HandleFunc("GET /snippet/view/{snippetID}", snippetView)
 	mux.HandleFunc("GET /snippet/create/", snippetCreate)
+	mux.HandleFunc("POST /snippet/create/", snippetCreatePost)
 	// print a log message to say that the server is runnning
 	log.Print("Starting server on :4000")
 
