@@ -32,7 +32,7 @@ func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// initializing mux as the server
 	mux := http.NewServeMux()
-	mux.HandleFunc("POST /{$}", home)
+	mux.HandleFunc("GET /{$}", home)
 	mux.HandleFunc("GET /snippet/view/{snippetID}", snippetView)
 	mux.HandleFunc("GET /snippet/create/", snippetCreate)
 	mux.HandleFunc("POST /snippet/create/", snippetCreatePost)
