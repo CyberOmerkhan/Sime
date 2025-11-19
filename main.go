@@ -28,7 +28,7 @@ func snippetCreate(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// initializing mux as the server
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /{$}", home)
+	mux.HandleFunc("POST /{$}", home)
 	mux.HandleFunc("GET /snippet/view/{snippetID}", snippetView)
 	mux.HandleFunc("GET /snippet/create/", snippetCreate)
 	// print a log message to say that the server is runnning
