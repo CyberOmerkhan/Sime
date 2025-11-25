@@ -37,7 +37,7 @@ func main() {
 	mux.HandleFunc("GET /snippet/view/{snippetID}", snippetView)
 	mux.HandleFunc("GET /snippet/create/", snippetCreate)
 	mux.HandleFunc("POST /snippet/create/", snippetCreatePost)
-	// print a log message to say that the server is runnning
+	// print a log message with a port
 	log.Print("Starting server on :4000")
 
 	err := http.ListenAndServe(":4000", mux)
