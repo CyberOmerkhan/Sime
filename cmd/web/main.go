@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	mux := http.NewServerMux()
+	mux := http.NewServeMux()
 	mux.HandleFunc("GET /{$}", home)
 	mux.HandleFunc("GET /snippet/view/{id}", snippetView)
 	mux.HandleFunc("GET /snippet/create", snippetCreate)
