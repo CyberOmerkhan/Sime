@@ -19,7 +19,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		log.Print(err.Error())
-		app.Logger.Error(err.Error(), "method", r.Method, "uri", r.URL.RequestURI())
+		app.logger.Error(err.Error(), "method", r.Method, "uri", r.URL.RequestURI())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
