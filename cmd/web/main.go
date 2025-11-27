@@ -17,7 +17,7 @@ func main() {
 	mux.HandleFunc("GET /snippet/view/{id}", snippetView)
 	mux.HandleFunc("GET /snippet/create", snippetCreate)
 	mux.HandleFunc("POST /snippet/create", snippetCreatePost)
-	log.Print("Server running on a :4000")
+	log.Print("Server running on a port ", *addr)
 	err := http.ListenAndServe(*addr, mux)
 	log.Fatal(err)
 }
