@@ -14,6 +14,7 @@ type application struct {
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP Network Address")
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
 	flag.Parse()
 	app := &application{logger: logger}
 
