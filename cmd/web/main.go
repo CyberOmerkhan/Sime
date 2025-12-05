@@ -16,10 +16,9 @@ type application struct {
 
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP Network Address")
-	dsn := flag.String("dsn", "web:pass@/snippetbox?parseTime=true", "MySQL data source name")
+	dsn := flag.String("dsn", "web:adeka2015@/snippetbox?parseTime=true", "MySQL data source name")
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
-
 	db, err := openDB(*dsn)
 	if err != nil {
 		logger.Error(err.Error())
