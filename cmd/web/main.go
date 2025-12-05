@@ -19,6 +19,7 @@ func main() {
 	dsn := flag.String("dsn", "web:adeka2015@/snippetbox?parseTime=true", "MySQL data source name")
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
 	db, err := openDB(*dsn)
 	if err != nil {
 		logger.Error(err.Error())
