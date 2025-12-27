@@ -27,7 +27,6 @@ func main() {
 	}
 	flag.Parse()
 	defer db.Close()
-
 	app := &application{logger: logger}
 	logger.Info("starting server", "addr", *addr)
 	err = http.ListenAndServe(*addr, app.routes())
