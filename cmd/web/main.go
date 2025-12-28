@@ -12,7 +12,9 @@ import (
 
 type application struct {
 	logger *slog.Logger
-} func main() {
+}
+
+func main() {
 	addr := flag.String("addr", ":4000", "HTTP Network Address")
 	dsn := flag.String("dsn", "web:adeka2015@/snippetbox?parseTime=true", "MySQL data source name")
 
@@ -37,6 +39,7 @@ func openDB(dsn string) (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	err = db.Ping()
 	if err != nil {
 		db.Close()
