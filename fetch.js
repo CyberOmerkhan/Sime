@@ -5,10 +5,12 @@ async function getData() {
         if(!response){
             throw new Error(`Response Status: ${response.status}`)
         }
-        console.log(response)
+        console.log(response.body)
     } catch(err) {
         console.error(`Error: ${err.message}`)
     }
 
     console.log("asdadsadasdsa")
 }
+
+getData()
