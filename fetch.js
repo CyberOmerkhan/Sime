@@ -1,4 +1,5 @@
 async function getData() {
+    const url = `https://dog.ceo/api/breeds/image/random`
     try{
         fetch(url).then((response) => {
             if(!response.ok)
