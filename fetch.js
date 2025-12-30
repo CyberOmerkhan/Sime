@@ -9,4 +9,6 @@ async function getData() {
     } catch(err) {
         console.error(`Error: ${err.message}`)
     }
+
+    console.log("asdadsadasdsa")
 }
