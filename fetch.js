@@ -5,7 +5,7 @@ async function getData() {
         if(!response){
             throw new Error(`Response Status: ${response.status}`)
         }
-        console.log(response.body)
+        console.log(response)
     } catch(err) {
         console.error(`Error: ${err.message}`)
     }
