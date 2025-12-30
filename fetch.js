@@ -1,9 +1,9 @@
 async function getData() {
-    const url = `https://dog.ceo/api/breeds/image/random`
+    const url = `https://dog.ceo/api/breeds/imae/random`
     try{
         fetch(url).then((response) => {
             if(!response.ok)
-                throw new Error(`Error code: ${response.code}`)
+                throw new Error(`Error code: ${response.status_code}`)
             return response.json()
         }).then((data) => { 
             console.log(data)
