@@ -5,6 +5,6 @@ fetch(url).then((response) => {
         throw new Error(`Error Code is ${response.status_code}`)
     return response.json()
 }).then((data) => {
-    console.log(data)
+    console.log(data.response)
 })
 
