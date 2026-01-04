@@ -13,21 +13,16 @@ const response = await openai.responses.create({
             content: [
                 {
                     type: "input_text",
-                    text: "What do you see in that image? Use web search and find me about this competition. Seemingly, this hackathon was in 2023. Find me who won in 2025.",
+                    text: "Say 'I love apples' ten times",
                 },
-                {
-                    type: "input_image",
-                    image_url: "https://nis.edu.kz/storage/news/321.jpg"
-                }
             ]
         }
     ],
-    tools: [
-        {type: "web_search"}
-    ]
+    stream: true,
 })
 
-console.log(response.output_text)
-console.log(response.metadata)
+for await(let item of response){
+    console.log(item)
+}
 
 // console.log(process.env.OPENAI_API_KEY)
