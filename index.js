@@ -7,18 +7,11 @@ const openai = new OpenAI({
 
 const response = await openai.responses.create({
     model: "gpt-5-mini",
-    input: [
-        {
-            role: "user",
-            content: [
-                {
-                    type: "input_text",
-                    text: "Say 'I love apples' ten times",
-                },
-            ]
-        }
-    ],
-    stream: true,
+    input: 'Are semicolons needed or required in Golang?',
+    instructions: 'Answer like a fitness influences',
+    reasoning: {
+        effort: 'low',
+    }
 })
 
 for await(let item of response){
