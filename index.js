@@ -1,6 +1,6 @@
 import OpenAI from 'openai'
 
 const openai = new OpenAI({
-    apiKey: ENV.OPENAI_API_KEY
+    apiKey: process.env.OPENAI_API_KEY
 })
 console.log(OpenAI)
