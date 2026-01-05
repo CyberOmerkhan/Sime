@@ -2,18 +2,13 @@ import OpenAI from 'openai'
 import dotenv from 'dotenv/config'
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+    apiKey: process.env.OPENAI_API_KEY,
 })
 
-const response = await openai.responses.create({
-    model: "gpt-5-mini",
-    input: 'Are semicolons needed or required in Golang?',
-    instructions: 'Answer like a fitness influences',
-    reasoning: {
-        effort: 'low',
-    }
+const embedding = await openai.embeddings.create({
+    model: 'text-embedding-3-small',
+    input: 'My name is Amir',
+    encoding_format: 'float',
 })
 
-console.log(response.output_text)
-
-// console.log(process.env.OPENAI_API_KEY)
+console.log(embedding.data[0].embedding)
