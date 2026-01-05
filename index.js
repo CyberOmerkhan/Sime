@@ -14,8 +14,6 @@ const response = await openai.responses.create({
     }
 })
 
-for await(let item of response){
-    console.log(item)
-}
+console.log(response.output_text)
 
 // console.log(process.env.OPENAI_API_KEY)
