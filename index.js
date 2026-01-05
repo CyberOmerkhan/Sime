@@ -23,4 +23,4 @@ for(let input of inputs) {
     embeddingsArray.push(embedding.data[0].embedding)
 }
 
-export default embeddingArray
+export default embeddingsArray
