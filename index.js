@@ -11,7 +11,8 @@ const inputs = [
     "The country of Kazakhstan",
     "The World's largest landlocked country",
     "Cristiano Ronaldo",
-    'Desk Board',
+    'Portugal',
+    'Dastan Satpayev'
 ]
 
 for(let input of inputs) {
