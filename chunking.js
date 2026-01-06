@@ -1,6 +1,8 @@
 import {RecursiveCharacterTextSplitter} from '@langchain/textsplitters'
 import {createClient} from '@supabase/supabase-js'
 import {readFile} from 'fs/promises'
+import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
+import {OpenAIEmbeddings} from '@langchain/openai'
 import 'dotenv/config'
 
 const splitter = new RecursiveCharacterTextSplitter({
@@ -8,9 +10,22 @@ const splitter = new RecursiveCharacterTextSplitter({
     chunkOverlap: 100,
 })
 
-const sbApiKey = process.env.SUPABASE_API_KEY
-const sbUrl = process.env.SUPABASE_URL_KEY
-const openaiApiKey = process.env.OPENAI_API_KEY
+const embeddings = new OpenAIEmbeddings({
+    apiKey: process.env.OPENAI_API_KEY,
+    model: 'text-embedding-3-small',
+})
+
+const supabaseClient = createClient(
+    process.env.SUPABASE_URL_KEY,
+    process.env.SUPABASE_API_KEY,
+)
+
+const vectorStore = new SupabaseVectorSpace(embeddings, {
+    client: supabaseClient,
+    tableName: 'scrimba_smartass',
+    query: 'match_documents',
+})
+
 
 console.log(`API key: ${sbApiKey}`)
 console.log(`API url: ${sbUrl}`)
@@ -38,20 +53,6 @@ async function splitDocuments() {
 
 const documentChunks = await splitDocuments()
 
-// console.log(documentChunks)
-const client = createClient(sbUrl, sbApiKey)
-// console.log(client)
 
-const error = await client
-    .from('scrimba_smartass')
-    .insert({
-        id: 9,
-        content: "Amir sigma",
-        metadata: {
-            checked: false,
-            jacked: true,
-        },
-        embedding: Array.from({length: 1536}, () => 0.05)
-    })
 
 console.log(error)
