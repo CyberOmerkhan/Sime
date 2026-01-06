@@ -1,4 +1,10 @@
+import {RecursiveCharacterTextSplitter} from '@langchain/textsplitters'
 import {readFile} from 'fs/promises'
+
+const splitter = new RecursiveCharacterTextSplitter({
+    chunkSize: 500,
+    chunkOverlap: 100,
+})
 
 async function fetchDocuments() {
     try{
@@ -9,6 +15,16 @@ async function fetchDocuments() {
     }
 }
 
-const text = await fetchDocuments()
-console.log(text)
-console.log(process.cwd())
+async function splitDocuments() {
+    try {
+        const data = await fetchDocuments()
+        const chunks = await splitter.createDocuments([data])
+        return chunks
+    } catch(err){
+        throw new Error(`Something went wrong: ${err}`)
+    }
+}
+
+const documentChunks = await splitDocuments()
+
+console.log(documentChunks)
