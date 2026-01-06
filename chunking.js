@@ -20,17 +20,11 @@ const supabaseClient = createClient(
     process.env.SUPABASE_API_KEY,
 )
 
-const vectorStore = new SupabaseVectorSpace(embeddings, {
+const vectorStore = new SupabaseVectorStore(embeddings, {
     client: supabaseClient,
     tableName: 'scrimba_smartass',
     query: 'match_documents',
 })
-
-
-console.log(`API key: ${sbApiKey}`)
-console.log(`API url: ${sbUrl}`)
-
-
 
 async function fetchDocuments() {
     try{
@@ -53,6 +47,13 @@ async function splitDocuments() {
 
 const documentChunks = await splitDocuments()
 
-
-
-console.log(error)
+await SupabaseVectorStore.fromDocuments(
+    documentChunks,
+    new OpenAIEmbeddings({
+        openAIApiKey: process.env.OPENAI_API_KEY,
+    }),
+    {
+        client: supabaseClient,
+        tableName: 'scrimba_smartass'
+    }
+)
