@@ -1,4 +1,5 @@
 import {RecursiveCharacterTextSplitter} from '@langchain/textsplitters'
+import {createClient} from '@supabase/supabase-js'
 import {readFile} from 'fs/promises'
 import 'dotenv/config'
 
@@ -9,6 +10,7 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 const sbApiKey = process.env.SUPABASE_API_KEY
 const sbUrl = process.env.SUPABASE_URL_KEY
+const openaiApiKey = process.env.OPENAI_API_KEY
 
 console.log(`API key: ${sbApiKey}`)
 console.log(`API url: ${sbUrl}`)
@@ -34,6 +36,22 @@ async function splitDocuments() {
     }
 }
 
-// const documentChunks = await splitDocuments()
+const documentChunks = await splitDocuments()
 
 // console.log(documentChunks)
+const client = createClient(sbUrl, sbApiKey)
+// console.log(client)
+
+const error = await client
+    .from('scrimba_smartass')
+    .insert({
+        id: 9,
+        content: "Amir sigma",
+        metadata: {
+            checked: false,
+            jacked: true,
+        },
+        embedding: Array.from({length: 1536}, () => 0.05)
+    })
+
+console.log(error)
