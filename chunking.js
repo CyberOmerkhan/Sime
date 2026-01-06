@@ -1,10 +1,19 @@
 import {RecursiveCharacterTextSplitter} from '@langchain/textsplitters'
 import {readFile} from 'fs/promises'
+import 'dotenv/config'
 
 const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 500,
     chunkOverlap: 100,
 })
+
+const sbApiKey = process.env.SUPABASE_API_KEY
+const sbUrl = process.env.SUPABASE_URL_KEY
+
+console.log(`API key: ${sbApiKey}`)
+console.log(`API url: ${sbUrl}`)
+
+
 
 async function fetchDocuments() {
     try{
@@ -25,6 +34,6 @@ async function splitDocuments() {
     }
 }
 
-const documentChunks = await splitDocuments()
+// const documentChunks = await splitDocuments()
 
-console.log(documentChunks)
+// console.log(documentChunks)
