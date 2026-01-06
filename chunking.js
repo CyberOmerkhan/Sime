@@ -1,15 +1,21 @@
 import {RecursiveCharacterTextSplitter} from "@langchain/textsplitters"
+import fs from 'fs/promises'
+
+
 
 async function fetchDocuments() {
-    const response = await fetch('./scrimba_info.txt')
-    const data = await response.text()
-    return data
+    try{
+        const data = await fs.readFile('scrimba_info.txt')
+        return data
+    } catch(err){
+        console.log(`Something went wrong: ${err}`)
+    }
 }
 
 const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 500,
 })
 
-const text = fetchDocuments()
+const text = await fetchDocuments()
 
 console.log(text)

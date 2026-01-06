@@ -10,6 +10,7 @@
     "@langchain/openai": "^1.2.1",
     "@langchain/textsplitters": "^1.0.1",
     "@supabase/supabase-js": "^2.89.0",
+    "@types/node": "^25.0.3",
     "dotenv": "^16.4.5",
     "langchain": "^1.2.4",
     "openai": "^4.62.1"
