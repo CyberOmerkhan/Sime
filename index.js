@@ -10,9 +10,9 @@ const embeddingsArray = []
 const inputs = [
     "The country of Kazakhstan",
     "The World's largest landlocked country",
-    "Cristiano Ronaldo",
+    "Eusebio",
     'Portugal',
-    'Dastan Satpayev'
+    'Dastan Satpayev',
 ]
 
 for(let input of inputs) {
