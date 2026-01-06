@@ -1,4 +1,5 @@
 import {ChatOpenAI} from '@langchain/openai'
+import 'dotenv/config'
 
 const llm = new ChatOpenAI( {
     apiKey: process.env.OPENAI_API_KEY,
@@ -6,15 +7,16 @@ const llm = new ChatOpenAI( {
     temperature: 0,
 })
 
-const response = await llm.invoke([
-    {
-        role: 'system',
-        content: 'You are a very helpful AI assistant',
-    },
-    {
-        role: 'user',
-        content: "What is the world's biggest landlocked country in the world?"
-    }
+console.log(`API keyy: ${process.env.OPENAI_API_KEY}`)
+
+const aiMsg = await llm.invoke([
+  {
+    role: "system",
+    content: "You are a helpful assistant that translates English to French. Translate the user sentence.",
+  },
+  {
+    role: "user",
+    content: "I love programming."
+  },
 ])
 
-console.log(response.content)
