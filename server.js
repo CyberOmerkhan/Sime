@@ -5,10 +5,7 @@ const PORT = 8080
 const __dirname = import.meta.dirname
 
 const server = http.createServer(async (req, res) => {
-    serveStatic(__dirname)
-    res.setHeader('Content-Type', 'text/html')
-    res.statusCode = 200
-    res.end()
+    serveStatic(res, __dirname)
 })
 
 server.listen(PORT, () => {
