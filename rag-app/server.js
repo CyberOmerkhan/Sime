@@ -1,6 +1,6 @@
 import http, { get } from 'node:http'
-import { getDataFromDB } from './data/db.js'
-import { handleResponse } from "./utils/handleResponse.js"
+import { getDataFromDB } from '../data/db.js'
+import { handleResponse } from "../utils/handleResponse.js"
 import { url } from 'node:inspector'
 
 const destinations = await getDataFromDB()
