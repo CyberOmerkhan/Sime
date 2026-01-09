@@ -1,5 +1,6 @@
 import {ChatOpenAI} from '@langchain/openai'
-import {PromptTemplate} from 'langchain/prompts/new'
+import {PromptTemplate} from 'langchain/prompts'
+
 import 'dotenv/config'
 
 const promptTemplate = `Generate a promotional tweet for a product using the product description: 

@@ -9,7 +9,7 @@ const embeddingsArray = []
 
 const inputs = [
     "The country of Kazakhstan",
-    "The World's largest landlocked country",
+    // "The World's largest landlocked country",
     "Eusebio",
     'Portugal',
     'Dastan Satpayev',
