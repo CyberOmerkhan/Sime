@@ -1,4 +1,17 @@
 {
+  "name": "sime",
+  "version": "1.0.0",
+  "description": "Sime is a web application which lets people paste and share snippets of text, just like Pastebin or GitHub's Gists.",
+  "homepage": "https://github.com/CyberOmerkhan/Sime#readme",
+  "bugs": {
+    "url": "https://github.com/CyberOmerkhan/Sime/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberOmerkhan/Sime.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -14,5 +27,6 @@
     "dotenv": "^16.6.1",
     "langchain": "^1.2.4",
     "openai": "^4.62.1"
-  }
+  },
+  "devDependencies": {}
 }
