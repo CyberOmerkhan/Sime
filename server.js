@@ -9,7 +9,7 @@ const server = http.createServer(async (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.statusCode = 200
     res.end(JSON.stringify(destinations))
-  } else if (req.url.startsWith('/api')) {
+  } else if (req.url.startsWith('/api/continent')) {
     res.statusCode = 200;
     const filteredContinent = destinations.filter(item => item.continent.toLowerCase() === req.url.split('/').pop().toLowerCase())
     res.end(JSON.stringify(filteredContinent))
