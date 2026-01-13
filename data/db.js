@@ -1,5 +1,4 @@
-import data from './data.js'
-
-export async function getDataFromDB() {
-    return data
+export const containerLink = {
+    message: 'Status code is 200',
+    error: 'None',
 }
