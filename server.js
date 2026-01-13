@@ -16,21 +16,15 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/:field/:term', (req, res) => {
+    const { field, term } = req.params
     const data = startups.filter(item => {
-        if(item.country.toLowerCase() === req.params.term.toLowerCase()){
-            console.log(`!!!!!!!!${item.name}`)
-            console.log((!(req.params.field.toLowerCase() === 'country') || item.country.toLowerCase() === req.params.term.toLowerCase())) 
-            console.log((!(req.params.field.toLowerCase() === 'continent') || item.continent.toLowerCase() === req.params.term.toLowerCase()))
-            console.log(!(req.params.field.toLowerCase() === 'industry') || item.industry.toLowerCase() === req.params.term.toLowerCase())
-        }
         return (
-        (!(req.params.field.toLowerCase() === 'country') || item.country.toLowerCase() === req.params.term.toLowerCase()) && 
-        (!(req.params.field.toLowerCase() === 'continent') || item.continent.toLowerCase() === req.params.term.toLowerCase()) && 
-        (!(req.params.field.toLowerCase() === 'industry') || item.industry.toLowerCase() === req.params.term.toLowerCase()))
+        (!(field.toLowerCase() === 'country') || item.country.toLowerCase() === term.toLowerCase()) && 
+        (!(field.toLowerCase() === 'continent') || item.continent.toLowerCase() === term.toLowerCase()) && 
+        (!(field.toLowerCase() === 'industry') || item.industry.toLowerCase() === term.toLowerCase()))
     })
     console.log(req.params)
     res.json(data)
-
 })
 
 app.listen(8000, () => console.log('listening 8000'))
