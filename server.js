@@ -1,20 +1,11 @@
 import express from 'express'
-
-const PORT = 8000;
-const celebrity = {
-  type: "action hero",
-  name: "JSON Statham"
-}
+import {startups} from './data/data.js'
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(celebrity))
+app.get('/api', (req, res) => {
+    res.json(startups)
 })
 
-app.listen(PORT, () => {
-    console.log(`Server connected to a port ${PORT}`)
-})
-
+app.listen(8000, () => console.log('listening 8000'))
 
