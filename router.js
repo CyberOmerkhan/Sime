@@ -1,9 +1,12 @@
 import express from 'express'
 import {containerLink as data} from './data/db.js'
 import {apiRouter} from './routes/apiRoutes.js'
+import cors from 'cors'
 
 const PORT = 8080;
 const app = express();
+
+app.use(cors())
 
 app.use('/api', apiRouter)
 
