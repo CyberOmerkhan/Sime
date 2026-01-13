@@ -16,7 +16,15 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/:field/:term', (req, res) => {
+    const allowedFields = ['country', 'continent', 'industry']
     const { field, term } = req.params
+
+    if(!allowedFields.includes(field.toLowerCase())){
+        return res.status(404).json({
+            message: "Search field not allowed. Please use only 'country', 'continent', 'industry'"
+        })
+    }
+
     const data = startups.filter(item => {
         return (
         (!(field.toLowerCase() === 'country') || item.country.toLowerCase() === term.toLowerCase()) && 
