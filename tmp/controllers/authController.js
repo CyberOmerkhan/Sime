@@ -1,3 +1,4 @@
+import { messageToOpenAIRole } from '@langchain/openai';
 import validator from 'validator'
 
 export async function registerUser(req, res) {
@@ -13,7 +14,12 @@ export async function registerUser(req, res) {
 
     if(errorAuth){
         res.json({
-            error: "Invalid authorization form input"
+            error: "Invalid authorization form input",
+        })
+    }
+    else{
+        res.json({
+            message: "ALL GOOD",
         })
     }
 }
