@@ -10,9 +10,7 @@ const server = http.createServer(async (req, res) => {
     const urlObj = new URL(req.url, `http://localhost:${PORT}`)
     const queryObj = Object.fromEntries(urlObj.searchParams)
     console.log(queryObj)
-
-
-  res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Content-Type', 'text/html')
     if (req.url === '/api' && req.method === 'GET') {
         handleResponse(res, 200, destinations)
     } else if (req.url.startsWith('/api/continent')) {
