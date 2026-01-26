@@ -7,13 +7,7 @@ const openai = new OpenAI({
 
 const embeddingsArray = []
 
-const inputs = [
-    "The country of Kazakhstan",
-    // "The World's largest landlocked country",
-    "Eusebio",
-    'Portugal',
-    'Dastan Satpayev',
-]
+const inputs = []
 
 for(let input of inputs) {
     const embedding = await openai.embeddings.create({
